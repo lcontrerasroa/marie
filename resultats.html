@@ -70,6 +70,109 @@
             hiddenElement.click();
         }
 
+// Graphiques farfelus
+        window.onload = function() {
+            var ctx1 = document.getElementById('chart1').getContext('2d');
+            var chart1 = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ['11h', '13h', '15h', '17h', '19h', '21h', '23h', '1h'],
+                    datasets: [{
+                        label: 'Énergie vs. Temps',
+                        data: [100, 85, 70, 55, 40, 25, 10, 0],
+                        borderColor: '#ff69b4',
+                        fill: false
+                    }]
+                },
+                options: {}
+            });
+
+           
+Je vais modifier le code pour mettre à jour les graphiques de la page resultats.html selon vos nouvelles instructions.
+
+Modifications à apporter :
+Quantité d'encre vs. nombre de clients :
+
+Passer d'un graphique en barres à un graphique en lignes.
+Représenter une augmentation exponentielle avec 11 points de données (clients).
+Clopes fumées vs. engueulades avec des clients bourrés :
+
+Créer un graphique en lignes partant de (0, 0) à (300, 11).
+Voici le code mis à jour pour resultats.html :
+html
+Copier le code
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats - Questionnaire Rigolo</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(120deg, #a8edea, #fed6e3);
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffffcc;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #ff69b4;
+            font-family: 'Pacifico', cursive;
+        }
+        p {
+            color: #008080;
+            font-size: 1.2em;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #ff85b9;
+        }
+        .header-img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function downloadCSV() {
+            var csv = "Question,Réponse\n";
+            csv += "Excitation," + document.querySelector('input[name=\"q1\"]:checked').value + "\n";
+            csv += "Cafés," + document.querySelector('input[name=\"q2\"]:checked').value + "\n";
+            csv += "Chose bizarre," + document.querySelector('textarea[name=\"q3\"]').value + "\n";
+            csv += "Tatouage," + document.querySelector('textarea[name=\"q4\"]').value + "\n";
+            csv += "Technique," + document.querySelector('input[name=\"q5\"]:checked').value + "\n";
+            csv += "Tatouages faits," + document.querySelector('input[name=\"q6\"]').value + "\n";
+            csv += "Fatigue," + document.querySelector('input[name=\"q7\"]').value + "\n";
+            csv += "Meilleur moment," + document.querySelector('textarea[name=\"q8\"]').value + "\n";
+            csv += "Première chose après," + document.querySelector('textarea[name=\"q9\"]').value + "\n";
+            csv += "Super-pouvoir," + document.querySelector('input[name=\"q10\"]:checked').value + "\n";
+            
+            var hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+            hiddenElement.target = '_blank';
+            hiddenElement.download = 'resultats_marie.csv';
+            hiddenElement.click();
+        }
+
         // Graphiques farfelus
         window.onload = function() {
             var ctx1 = document.getElementById('chart1').getContext('2d');
@@ -87,32 +190,49 @@
                 options: {}
             });
 
+            // Nouveau graphique de ligne pour "Quantité d'encre vs. nombre de clients"
             var ctx2 = document.getElementById('chart2').getContext('2d');
             var chart2 = new Chart(ctx2, {
-                type: 'bar',
+                type: 'line',
                 data: {
-                    labels: ['Client 1', 'Client 2', 'Client 3', 'Client 4', 'Client 5'],
+                    labels: Array.from({length: 11}, (_, i) => `Client ${i + 1}`),
                     datasets: [{
                         label: "Quantité d'encre vs. nombre de clients",
-                        data: [10, 20, 30, 40, 50],
-                        backgroundColor: '#008080'
+                        data: Array.from({length: 11}, (_, i) => Math.pow(2, i)),
+                        borderColor: '#008080',
+                        fill: false
                     }]
                 },
                 options: {}
             });
 
+           // Nouveau graphique de ligne pour "Clopes fumées vs. engueulades avec des clients bourrés"
             var ctx3 = document.getElementById('chart3').getContext('2d');
             var chart3 = new Chart(ctx3, {
-                type: 'pie',
+                type: 'line',
                 data: {
-                    labels: ['Clopes fumées', 'Engueulades avec des clients bourrés'],
+                    labels: Array.from({length: 12}, (_, i) => i),
                     datasets: [{
-                        label: 'Clopes vs. Engueulades',
-                        data: [12, 5],
-                        backgroundColor: ['#ff69b4', '#008080']
+                        label: 'Clopes fumées vs. engueulades',
+                        data: Array.from({length: 12}, (_, i) => ({x: i * 30, y: i})),
+                        borderColor: ['#ff69b4'],
+                        fill: false
                     }]
                 },
-                options: {}
+                options: {
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            min: 0,
+                            max: 300
+                        },
+                        y: {
+                            min: 0,
+                            max: 11
+                        }
+                    }
+                }
             });
         }
     </script>
