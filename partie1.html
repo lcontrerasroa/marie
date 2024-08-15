@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partie 1 - Questionnaire Rigolo</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(120deg, #a8edea, #fed6e3);
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffffcc;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #ff69b4;
+            font-family: 'Pacifico', cursive;
+        }
+        p {
+            color: #008080;
+            font-size: 1.2em;
+            text-align: left;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #ff85b9;
+        }
+        .header-img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        /* Barre de progression */
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            width: 50%; /* Progression mise à jour pour cette partie */
+            height: 20px;
+            background-color: #ff69b4;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/lcontrerasroa/lcontrerasroa/ddb449cfefd6ba51deb9a3cd36c8bc799c41fabc/images/marie-02.jpg" alt="Marie en train de se maquiller" class="header-img">
+        <h1>Partie 1 : Avant/Pendant l'événement</h1>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <form action="partie2.html" method="get">
+            <div class="question">
+                <p>1. Sur une échelle de 1 à 10, à quel point es-tu excitée pour cette journée de tatouage ?</p>
+                <input type="range" name="q1" min="1" max="10" value="5" oninput="this.nextElementSibling.value = this.value">
+                <output>5</output>
+            </div>
+            <div class="question">
+                <p>2. Combien de cafés penses-tu boire aujourd'hui ?</p>
+                <input type="radio" name="q2" value="1"> Juste un<br>
+                <input type="radio" name="q2" value="3"> Quelques-uns<br>
+                <input type="radio" name="q2" value="10"> TROP. AU SECOURS.<br>
+            </div>
+            <div class="question">
+                <p>3. Quelle est la chose la plus bizarre que tu as entendue d'un client ?</p>
+                <textarea name="q3" rows="4" cols="50"></textarea><br>
+            </div>
+            <div class="question">
+                <p>4. Si tu devais choisir un tatouage pour toi-même aujourd'hui, que choisirais-tu ?</p>
+                <textarea name="q4" rows="4" cols="50"></textarea><br>
+            </div>
+            <div class="question">
+                <p>5. Quelle est ta technique secrète pour rester éveillée pendant des heures ?</p>
+                <input type="radio" name="q5" value="danser"> Danser entre les séances<br>
+                <input type="radio" name="q5" value="manger"> Manger des bonbons à chaque pause<br>
+                <input type="radio" name="q5" value="café"> Boire du café par litres<br>
+                <input type="radio" name="q5" value="café"> Faire le super-héros et le gagnant<br>
+            </div>
+            <button type="submit" class="btn">Passer à la partie 2</button>
+        </form>
+    </div>
+</body>
+</html>

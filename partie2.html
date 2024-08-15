@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partie 2 - Questionnaire Rigolo</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(120deg, #a8edea, #fed6e3);
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffffcc;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #ff69b4;
+            font-family: 'Pacifico', cursive;
+        }
+        p {
+            color: #008080;
+            font-size: 1.2em;
+            text-align: left;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #ff85b9;
+        }
+        .header-img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        /* Barre de progression */
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            width: 100%; /* Progression complète à cette étape */
+            height: 20px;
+            background-color: #ff69b4;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/lcontrerasroa/lcontrerasroa/ddb449cfefd6ba51deb9a3cd36c8bc799c41fabc/images/marie-03.jpg" alt="Marie à la plage" class="header-img">
+        <h1>Partie 2 : Après l'événement</h1>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <form action="resultats.html" method="get">
+            <div class="question">
+                <p>1. Combien de tatouages as-tu fait aujourd'hui ?</p>
+                <input type="number" name="q6"><br>
+            </div>
+            <div class="question">
+                <p>2. Sur une échelle de 1 à 10, à quel point es-tu fatiguée maintenant ?</p>
+                <input type="range" name="q7" min="1" max="10" value="5" oninput="this.nextElementSibling.value = this.value">
+                <output>5</output>
+            </div>
+            <div class="question">
+                <p>3. Quel est le meilleur moment de la journée selon toi ?</p>
+                <textarea name="q8" rows="4" cols="50"></textarea><br>
+            </div>
+            <div class="question">
+                <p>4. Quelle est la première chose que tu vas faire après cette longue journée ?</p>
+                <textarea name="q9" rows="4" cols="50"></textarea><br>
+            </div>
+            <div class="question">
+                <p>5. Si tu pouvais avoir un super-pouvoir pour t’aider aujourd’hui, lequel choisirais-tu ?</p>
+                <input type="radio" name="q10" value="invisibilité"> Invisibilité pour échapper aux clients ennuyeux<br>
+                <input type="radio" name="q10" value="vitesse"> Vitesse super-sonique pour finir plus vite<br>
+                <input type="radio" name="q10" value="force"> Force surhumaine pour ne jamais être fatiguée<br>
+                <input type="radio" name="q10" value="force"> Contrôle mental, pour établir ma propre mafia du tatouage<br>
+            </div>
+            <button type="submit" class="btn">Voir les résultats</button>
+        </form>
+    </div>
+</body>
+</html>
